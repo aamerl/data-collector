@@ -1,0 +1,135 @@
+{
+    "site_id": 1,
+    "zone_id": 1,
+    "customer_id": 1,
+    "configuration_id": 1,
+    "box_id": 1,
+    "version": "1.0.0",
+    "mode": "auto",
+    "period": 15,
+    "bluetooth": {
+        "service_name": "box_service_name",
+        "uuid": "94f39d29-7d6d-437d-973b-fba39349d4ee"
+    },
+    "aes_key": "abcdefgh12345678",
+    "raspberrypi-ip-address": "192.1.1.1",
+    "mqtt": {
+        "max_retry": 3,
+        "ip-address": "127.0.0.1",
+        "port": 1883,
+        "protocol": "MQTTv311",
+        "qos": 0,
+        "client_id": "lhoussaine",
+        "topics": {
+            "input": "input1",
+            "output": "output1"
+        }
+    },
+    "sqLite": {
+        "measures_table": "measures",
+        "max_rows": 1000
+    },
+    "influxdb": {
+        "url": "http://localhost:8086",
+        "token": "2VJvKuGz3lJBg1KMiZo1PKmf3e4LndXizFUILQrg3fex65mu9eyPBUstci5ZAba-yMswI7HZVQodNn2DdkecIQ==",
+        "org": "org",
+        "bucket": "bucket"
+    },
+    "rasp_client": {
+        "method": "rtu",
+        "port": "/dev/ttyUSB0",
+        "timeout": 0.5,
+        "stopbits": 1,
+        "bytesize": 8,
+        "parity": "N",
+        "baudrate": 9600
+    },
+    "sensors": [
+        {
+            "sensor_id": 1,
+            "bytesize": 8,
+            "timeout": 0.5,
+            "stopbits": 1,
+            "parity": "N",
+            "port": "/dev/ttyUSB0",
+            "baudrate": 4800,
+            "unit": 2,
+            "type": "NPK",
+            "active": true,
+            "count": 1,
+            "method": "rtu",
+            "measures": [
+                {
+                    "measure_id": 1,
+                    "unit": "mg/kg",
+                    "name": "Nitrogen",
+                    "address": "0X001E"
+                },
+                {
+                    "measure_id": 2,
+                    "unit": "mg/kg",
+                    "name": "Phosphorus",
+                    "address": "0X001F"
+                },
+                {
+                    "measure_id": 3,
+                    "unit": "mg/kg",
+                    "name": "Potassium",
+                    "address": "0x0020"
+                }
+            ]
+        },
+        {
+            "sensor_id": 2,
+            "bytesize": 8,
+            "timeout": 0.5,
+            "stopbits": 1,
+            "parity": "N",
+            "port": "/dev/ttyUSB0",
+            "baudrate": 9600,
+            "unit": 3,
+            "type": "THEC",
+            "active": true,
+            "count": 1,
+            "method": "rtu",
+            "measures": [
+                {
+                    "measure_id": 1,
+                    "unit": "°C",
+                    "name": "Temperature",
+                    "address": "0x0000"
+                },
+                {
+                    "measure_id": 2,
+                    "unit": "%",
+                    "name": "Volumetric water content",
+                    "address": "0x0001"
+                },
+                {
+                    "measure_id": 3,
+                    "unit": "µs/cm",
+                    "name": "Electrical conductivity",
+                    "address": "0x0002"
+                },
+                {
+                    "measure_id": 4,
+                    "unit": "",
+                    "name": "Soil type",
+                    "address": "0x0020"
+                },
+                {
+                    "measure_id": 5,
+                    "unit": "mg/L",
+                    "name": "Salinity",
+                    "address": "0x0003"
+                },
+                {
+                    "measure_id": 6,
+                    "unit": "mg/L",
+                    "name": "Total dissolved solids",
+                    "address": "0x0004"
+                }
+            ]
+        }
+    ]
+}

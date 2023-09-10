@@ -5,7 +5,6 @@ This module contains Measure Class that represent a physical measure that we obt
 """
 
 __author__ = "Aamer Lhoussaine"
-__copyright__ = "Copyright 2021, The Agric 4.0 project"
 __email__ = "lhoussaine.aamer@outlook.fr"
 __status__ = "Dev"
 

@@ -5,7 +5,6 @@ Module for all function that can help in the process
 Each function will be described
 """
 __author__ = "Aamer Lhoussaine"
-__copyright__ = "Copyright 2021, The Agric 4.0 project"
 __email__ = "lhoussaine.aamer@outlook.fr"
 __status__ = "Dev"
 
@@ -14,12 +13,10 @@ import logging
 import json
 import time
 from typing import List
-from main.sensor.sensor import Sensor
+from main.sensor.sensor import Sensor, THECSensor, NPKSensor
 from pymodbus.client.sync import ModbusSerialClient
-from main.sensor.soil_npk_sensor import NPKSensor
-from main.sensor.soil_thec_sensor import THECSensor
 from main.sensor.measure import Measure
-from main.conf import constants
+from main import constants
 
 
 def init_argparse() -> argparse.ArgumentParser:
