@@ -1,16 +1,16 @@
 version: "3"
 
 services:
-  influxdb:
-    image: influxdb:2.6.1-alpine
-    expose:
-      - "8086"
-    environment:
-      - INFLUXDB_DB=influxdb
-      - INFLUXDB_ADMIN_USER=influxdb
-      - INFLUXDB_ADMIN_PASSWORD=influxdb
-    volumes:
-      - influxdb:/var/lib/influxdb
+  # influxdb:
+  #   image: arm64v8/influxdb:2.6.1-alpine
+  #   expose:
+  #     - "8086"
+  #   environment:
+  #     - INFLUXDB_DB=influxdb
+  #     - INFLUXDB_ADMIN_USER=influxdb
+  #     - INFLUXDB_ADMIN_PASSWORD=influxdb
+  #   volumes:
+  #     - influxdb:/var/lib/influxdb
 
   grafana:
     image: grafana/grafana
@@ -18,15 +18,23 @@ services:
     restart: always
     volumes:
       - grafana-storage:/var/lib/grafana
-      - ./grafana-provisioning/:/etc/grafana/provisioning
+      - .data/grafana-provisioning/:/etc/grafana/provisioning
     environment:
       - GF_SECURITY_ADMIN_USER=admin123
       - GF_SECURITY_ADMIN_PASSWORD=admin123
     ports:
       - 3000:3000
-    links:
-      - influxdb
+    deploy:
+      resources:
+        limits:
+          cpus: '0.40'
+          memory: 50M
+        reservations:
+          cpus: '0.25'
+          memory: 20M
+    # links:
+    #   - influxdb
 
 volumes:
-  influxdb:
+  # influxdb:
   grafana-storage:

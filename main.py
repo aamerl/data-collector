@@ -3,7 +3,6 @@
 """This contain the main function"""
 
 __author__ = "Aamer Lhoussaine"
-__copyright__ = "Copyright 2021, The Agric 4.0 project"
 __email__ = "lhoussaine.aamer@outlook.fr"
 __status__ = "Dev"
 
@@ -11,10 +10,10 @@ import time
 import logging.config
 from pymodbus.client.sync import ModbusSerialClient
 from main.db.db import InfluxDB
-from main.utils.utils import *
+from main.utils import init_argparse, read_config_file, init_sensors, get_data
 
 
-def main() -> None:
+if __name__ == "__main__":
     # init args
     parser = init_argparse()
     args = parser.parse_args()
@@ -30,8 +29,10 @@ def main() -> None:
                                      bytesize=config["rasp_client"]["bytesize"],
                                      parity=config["rasp_client"]["parity"],
                                      baudrate=config["rasp_client"]["baudrate"])
+
     rasp_client.connect()
     # init influxdb client
+    # TODO: add other sink to store data more then influxdb and SQLite
     inf_client = InfluxDB(url=config["influxdb"]["url"],
                           token=config["influxdb"]["token"],
                           org=config["influxdb"]["org"]
@@ -47,7 +48,3 @@ def main() -> None:
             inf_client.insert_measures(bucket=bucket, measures_list=data)
         # sleep time in the config file
         time.sleep(config["period"])
-
-
-if __name__ == "__main__":
-    main()
