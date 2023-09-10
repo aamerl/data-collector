@@ -1,6 +1,6 @@
 # Rasp Data Collector
 
-Its a project that aims to read data for multiple sensors in raspberry pi and store that data in an SQLite database or InfluxDB
+Read data for multiple sensors using raspberry pi and store that data in an SQLite or InfluxDB database.
 
 ## Installation
 
